@@ -1,0 +1,44 @@
+<!-- course.html -->
+
+
+<form method="GET">
+　要查詢的關鍵字: <input type="text" name="keyword">
+　<input type="submit" value="搜尋">
+</form>
+
+<table border="1" height="35">
+		<tr>
+			<td width="100"><font color="darkpurple"><b>課程名稱</b></font></td>
+			<td width="20"><font color="darkpurple"><b>學分</b></font></td>
+			<td width="50"><font color="darkpurple"><b>全年/半年</b></font></td>
+			<td width="50"><font color="darkpurple"><b>必修/選修</b></font></td>
+			<td width="100"><font color="darkpurple"><b>授課教師</b></font></td>
+			<td width="20"><font color="darkpurple"><b>加選方式</b></font></td>
+			<td width="100"><font color="darkpurple"><b>上課時間</b></font></td>
+			<td width="100"><font color="darkpurple"><b>上課地點</b></font></td>
+			<td width="30"><font color="darkpurple"><b>總人數</b></font></td>
+			<td width="20"><font color="darkpurple"><b>點擊次數</b></font></td>
+			<td width="100"><font color="darkpurple"><b>選課限制條件</b></font></td>
+			<td width="100"><font color="darkpurple"><b>備註</b></font></td>
+			<td width="100"><font color="darkpurple"><b>課程網址</b></font></td>
+
+		</tr>
+		{% for course in course_list %}
+		<tr>
+			<td width="100"><a href="{{course.id}}">{{ course.class_name }}</a></td>
+			<td width="20">{{ course.credit }}</td>
+			<td width="50">{{ course.half_year }}</td>
+			<td width="50">{{ course.required }}</td>
+			<td width="100">{{ course.teacher }}</td>
+			<td width="20">{{ course.add_type }}</td>
+			<td width="100">{{ course.class_time }}</td>
+			<td width="100">{{ course.place }}</td>
+			<td width="30">{{ course.stu_number }}</td>
+			<td width="20">{{ course.click_times }}</td>
+			<td width="100">{{ course.constraints }}</td>
+			<td width="100">{{ course.remark }}</td>
+			<td width="100"><a href="{{course.class_url}}"><font >url</font></a></td>
+		</tr>
+		{% endfor %}
+	</table>
+
