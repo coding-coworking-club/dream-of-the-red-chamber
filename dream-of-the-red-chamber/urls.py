@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 
 from apps.course.views import course, course_detail
+from apps.user.views import signup
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+	path('admin/', admin.site.urls),
 	path('course/', course),
 	path('course/<course_id>/', course_detail),
+	path('signup/', signup)
 ]
