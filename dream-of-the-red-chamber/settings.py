@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 # ENABLE admin
 SITE_ID = 1
 
+# REDIRECT URL AFTER LOGIN
+LOGIN_REDIRECT_URL = '/course/'
+
 
 # Application definition
 
