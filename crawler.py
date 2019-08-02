@@ -135,7 +135,7 @@ while course_number < total_num_course:
 print(start_time)
 
 # save as json
-final_file = 'all_course-' + current_semster + '.json'
+final_file = 'all_course-' + current_sem + '.json'
 with open(final_file, 'w') as fout:
     json.dump(frame, fout)    
 

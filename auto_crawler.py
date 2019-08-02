@@ -7,8 +7,8 @@ import datetime
 
 now = datetime.datetime.now()
 
-everyday_start_hour = 17
-everyday_start_min  = 55
+everyday_start_hour = 20
+everyday_start_min  = 5
 
 while True:
     now = datetime.datetime.now()
@@ -17,5 +17,8 @@ while True:
         os.system('python crawler.py')
         print(now)
     
+    elif now.minute == 0:
+        print(now)
+
     time.sleep(55)
 
