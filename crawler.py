@@ -9,11 +9,11 @@ import html2text
 import requests
 import re
 import time
-import pandas as pd
+import json
 
 prefix = 'http://nol.ntu.edu.tw/nol/coursesearch/'
-num_course_in_one_page = 130
-current_sem = '107-2'
+num_course_in_one_page = 130  # how many courses in one page
+current_sem = '108-1'  # which semster to crawl
 
 first_page_url = (prefix + 
                  ('search_result.php?alltime=yes&allproced=yes&cstype=1&csname=&current_sem=' + current_sem +
@@ -63,7 +63,8 @@ pattern_course_half     = re.compile('³Æµù\|(.*)½Òµ{¤jºõ\|')
 
 frame = []
 course_number = 0
-pattern_courses = re.compile(r'print_table(.+?)lang=CH')  # if there is no '?', re will search for longest string, which will lead to error in our case
+pattern_courses = re.compile(r'print_table(.+?)lang=CH')  
+# if there is no '?', re will search for longest string, which will lead to error in our case
 
 start_time = (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 print(start_time)
@@ -133,7 +134,10 @@ while course_number < total_num_course:
 
 print(start_time)
 
-pd.DataFrame(frame).to_csv('0730-all_course-107-2.csv', ignore_index = True)    
+# save as json
+final_file = 'all_course-' + current_semster + '.json'
+with open(final_file, 'w') as fout:
+    json.dump(frame, fout)    
 
 
 
