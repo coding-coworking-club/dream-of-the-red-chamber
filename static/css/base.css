@@ -10,18 +10,20 @@ html {
     top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 25px;
+    font-size: 30px;
     color: white;
+    text-shadow: black 0.1em 0.1em 0.2em;
 }
 .details {
     position: absolute;
-    top: 85%;
+    top: 95%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight:600;
     font-size: 15px;
     color: #33cccc;
 }
+
 /*search botton*/
 .search_box:hover > .search_text {
     width: 300px;
@@ -33,13 +35,17 @@ html {
 }
 .search_box {
     position: absolute;
-    top: 95%;
+    top: 87%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 60px;
     border-radius: 60px;
     padding: 0px;
     background: #33cccc;
+}
+::placeholder {
+  color: white;
+  opacity:0.4; 
 }
 .search_button {
     float: right;
@@ -54,7 +60,6 @@ html {
     align-items: center;
     color: white;
 }
-
 .search_button > i {
     font-size: 30px;
 }
@@ -62,15 +67,18 @@ html {
     float: center;
     border: none;
     outline: none;
-    transition: 0.4s;
+    transition: 0.3s;
     width: 0px;
     padding: 40x;
     background: none;
     color: white;
-    font-size: 20px;
-    line-height: 40px;
+    font-size: px;
+    text-align: center;
+    height: 100%;
+    line-height: 10px;
     font-weight: bold;
 }
+
 /* slideshow */
 .section-top {
     position: relative;
@@ -95,15 +103,6 @@ html {
     }
     /*
     % {
-    background-image: url(ntu-image/MainLibrary.jpg);
-    }
-    % {
-    background-image: url(ntu-image/PalmAvenue.jpg);
-    }
-    % {
-    background-image: url(test-only/ntu-image/Agriculture.jpg);
-    }
-    % {
     background-image: url(ntu-image/DertianHall.jpg);
     }
     % {
@@ -123,18 +122,6 @@ html {
     }
     % {
     background-image: url(ntu-image/Medicine.jpg);
-    }
-    % {
-    background-image: url(ntu-image/NTNU.jpg);
-    }
-    % {
-    background-image: url(ntu-image/NTUST.jpg);
-    }
-    % {
-    background-image: url(ntu-image/PublicHealth.png);
-    }
-    %v{
-    background-image: url(ntu-image/SocialScience.jpg);
     }
     */
 }
@@ -161,14 +148,8 @@ html {
 .ntuwebsite, .pttntucourse{
     color: #33cccc;
 }
-.ntusale, .DoubleMajor{
-    color:#fff;
-}
 .ntuwebsite:hover, .pttntucourse:hover{
     color:#fff;
-}
-.ntusale:hover, .DoubleMajor:hover{
-    color:#33cccc;
 }
 .links_button::before{
     content: "";
@@ -188,13 +169,50 @@ html {
     bottom: 0;
     border-radius: 50% 50% 0 0;
 }
-.ntusale::before, .DoubleMajor::before{
-    height:180%;
-}
 .ntuwebsite:hover::before,.pttntucourse:hover:before{
     height: 180%;
 }
-.ntusale:hover::before,.DoubleMajor:hover:before{
-    height: 0%;
+/*table*/
+table {
+	margin-top: 10%;
+	width:100%;
+	table-layout: fixed;
 }
-
+.tbl-header {
+	background-color: rgba(51,204,204,0.8);
+}
+.tbl-content {
+  height:200px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(#33cccc,0.3);
+}
+th {
+  padding: 20px 15px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  color: #fff;
+  font-size: 15px;
+  color: white; 
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+td {
+	padding: 15px;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: 300;
+	font-size: 15px;
+	color: #33cccc;
+	text-shadow: WHITE 0.1em 0.1em 0.2em;
+	border-bottom: solid 1pxrgba(255,255,255,0.1);
+}
+::-webkit-scrollbar {
+    width: 6px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}

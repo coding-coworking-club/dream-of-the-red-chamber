@@ -1,24 +1,36 @@
-<!-- course.html -->
-
-
-	<table border="1" height=auto>
-		<tr>
-			<td width="182"><font color="blue">課程名稱</font></td>
-			<td width="90"><font color="blue">授課教師</font></td>
-			<td width="90"><font color="blue">課號</font></td>
-			<td width="60"><font color="blue">學分數</font></td>
-			<td width="120"><font color="blue">上課時間</font></td>
-			<td width="200"><font color="blue">課程大綱</font></td>			
-			<td width="90"><font color="blue">授課對象</font></td>
-		</tr>
-		<tr>
-			<td width="182">{{ course.class_name }}</td>
-			<td width="90">{{ course.teacher }}</td>
-			<td width="90">{{ course.number }}</td>
-			<td width="60">{{ course.credit }}</td>
-			<td width="120">{{ course.time }}</td>
-			<td width="200">{{ course.syllabus }}</td>			
-			<td width="90">{{ course.stu_department }}</td>
-		</tr>
+{% extends "course/base.html" %} 
+{% block details %} 以下為該課程的詳細資訊！ {% endblock %}
+{% block course_detail %}
+<section>
+	<div class="tbl-header">
+	<table cellpadding="0" cellspacing="0" border="0">
+		<thead>
+			<tr>
+				<th ><strong>課程	名稱</strong></th>
+				<th ><strong>授課 教師</strong></th>
+				<th ><strong>課號</strong></th>
+				<th ><strong>學分數</strong></th>
+				<th ><strong>上課時間</strong></th>
+				<th ><strong>課程大綱</strong></th>
+				<th ><strong>授課對象</strong></th>
+			</tr>
+		</thead>
 	</table>
-
+	</div>
+	<div class="tbl-content">
+	<table cellpadding="0" cellspacing="0" border="0">
+		<tbody>
+			<tr>
+				<td>{{ course.class_name }}</td>
+				<td>{{ course.teacher }}</td>
+				<td>{{ course.number }}</td>
+				<td>{{ course.credit }}</td>
+				<td>{{ course.time }}</td>
+				<td>{{ course.syllabus }}</td>			
+				<td>{{ course.stu_department }}</td>
+			</tr>                              
+		</tbody>
+	</table>
+	</div>
+</section> 
+{% endblock %}

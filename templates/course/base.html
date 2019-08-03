@@ -5,27 +5,29 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <title> course_homepage </title>
-     <link rel="stylesheet" href="../static/css/base.css">
+     <title> dream-of-the-red-chamber </title>
+     <link rel="stylesheet" href="../../static/css/base.css">
      <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
    </head>
-   <body>
+   
+  <body>
 <!--Title-->
       <section class="main-title" >
-        <h1 class="title">Course Helper</h1>
+        <h1 class="title">Dream of the Red Chamber</h1>
         <h1 class="details">{% block details %}{% endblock %}</h1>
       </section>
      <section class="section-top"></section>
 <!--searchbox--> 
       <form class="search_box" method="GET">
-      <input type="text" name="" class="search_text" placeholder="" >
+      <input type="text" name="" class="search_text" placeholder="要好好選課！" >
       <a class="search_button" href="#">
       <i class="fas fa-search"></i>
       </a>
       </form>
  <!--table---->
-{% block table %}{% endblock %}}
+{% block course_table %}{% endblock %}
+{% block course_detail %}{% endblock %}
 <!--weblinks-->
-{% block weblinks %}{% endblock %}}
+{% block weblinks %}{% endblock %}
  </body>
 </html>
