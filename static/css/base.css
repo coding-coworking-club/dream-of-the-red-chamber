@@ -15,22 +15,19 @@
 
 @keyframes slide {
   0% {
-    background-image: url(../../static/image/01.jpg);
+    background-image: url("../image/01.jpg"), url("../image/02.jpg");
   }
-  20% {
-    background-image: url(../../static/image/02.jpg);
+  25% {
+    background-image: url("../image/02.jpg"), url("../image/03.jpg");
   }
-  40% {
-    background-image: url(../../static/image/03.jpg);
+  50% {
+    background-image: url("../image/03.jpg"), url("../image/04.jpg");
   }
-  60% {
-    background-image: url(../../static/image/04.jpg);
-  }
-  80% {
-    background-image: url(../../static/image/05.jpg);
+  75% {
+    background-image: url("../image/04.jpg"), url("../image/05.jpg");
   }
   100% {
-    background-image: url(../../static/image/01.jpg);
+    background-image: url("../image/05.jpg");
   }
 }
 
@@ -149,9 +146,10 @@ td {
 }
 
 .weblinks > a {
-  padding-left: 16px;
+  padding-left: 5%;
   color: white;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 ::-webkit-scrollbar {
