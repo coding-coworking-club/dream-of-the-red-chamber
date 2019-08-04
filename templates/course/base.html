@@ -1,7 +1,6 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,10 +41,10 @@
     </div>
     <div class="tbl-content">
       <table cellpadding="0" cellspacing="0" border="0">
-        <tbody></tbody>
+        <tbody>
             {% for course in course_list %}
             <tr>
-                <td><a href="{{course.id}}">{{ course.class_name }}</a></td>
+                <td><a style="color:#33cccc;" href="{{course.id}}">{{ course.class_name }}</a></td>
                 <td>{{ course.credit }}</td>
                 <td>{{ course.teacher }}</td>
                 <td>{{ course.class_time }}</td>
@@ -53,13 +52,12 @@
             </tr>
             {% endfor %}
           {% if not course_list %}
-          <h1>很抱歉，沒有找到對應的課程。請試試看其他關鍵字！</h1>
+          <h1 class='error-information'>很抱歉，沒有找到對應的課程。請試試看其他關鍵字！</h1>
           {% endif %}
+          {% block course_detail %}{% endblock %}
         </tbody>
       </table>
     </div>
-    {% block course_detail %}{% endblock %}
-  </div>
   <div class="weblinks">
     <a class="website" href="https://nol.ntu.edu.tw/nol/guest/index.php">台大課程網</a>
     <a class="ptt" href="https://www.ptt.cc/bbs/NTUcourse/index.html">PTT NTUcourse 版</a>

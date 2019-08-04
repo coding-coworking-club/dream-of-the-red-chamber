@@ -1,20 +1,2 @@
 {% extends "course/base.html" %} 
-{% block details %} 以下是跟關鍵字相關的搜尋結果！ {% endblock %}
-{% block course %}
-<div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <tbody>
-        <tr>
-          <td>AAAAA</td>
-          <td>AAAAA</td>
-          <td>AAAAA</td>
-          <td>AAAAA</td>
-          <td>AAAAA</td>  
-        </tr>
-        {% if course.class_name == 0 %}
-        <h1>很抱歉，沒有找到對應的課程。請試試看其他關鍵字！</h1>
-        {% endif %}
-      </tbody>
-    </table>
-  </div>
-{% endblock %}
+{% block details %} 請輸入你想要的課程關鍵字! {% endblock %}
