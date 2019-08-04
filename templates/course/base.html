@@ -9,21 +9,20 @@
   <link rel="stylesheet" href="../../static/css/base.css">
   <script async src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
-
 <body>
   <div class="background">
     <span class="title">Dream of the Red Chamber</span>
   </div>
-  <div class="search">
-    <div class="search-container">
-      <form class="search-box" method="GET">
-        <input type="text" name="keyword" class="search-text" placeholder="要好好選課！" button="">
-        <a class="search-button" href="#">
-          <i class="fas fa-search"></i>
-        </a>
-      </form>
-    </div>
-    <h2 class="detail">{% block details %}{% endblock %}</h1>
+    {% block search %}
+    {% endblock %}
+    <h1 class="detail">
+    {% block course_homepage %}
+    {% endblock %}
+    {% block course %}
+    {% endblock %}
+    {%  block detail %}
+    {% endblock %}
+    </h1>
   </div>
   <div class="table-container">
     <div class="tbl-header">
@@ -41,21 +40,12 @@
     </div>
     <div class="tbl-content">
       <table cellpadding="0" cellspacing="0" border="0">
-        <tbody>
-            {% for course in course_list %}
-            <tr>
-                <td><a style="color:#33cccc;" href="{{course.id}}">{{ course.class_name }}</a></td>
-                <td>{{ course.credit }}</td>
-                <td>{{ course.teacher }}</td>
-                <td>{{ course.class_time }}</td>
-                <td>{{ course.remark }}</td>
-            </tr>
-            {% endfor %}
-          {% if not course_list %}
-          <h1 class='error-information'>很抱歉，沒有找到對應的課程。請試試看其他關鍵字！</h1>
-          {% endif %}
-          {% block course_detail %}{% endblock %}
-        </tbody>
+          <tbody>
+          {% block course-table %}
+          {% endblock %}
+          {% block coursedetail-table %}
+          {% endblock %}
+          </tbody>
       </table>
     </div>
   <div class="weblinks">
@@ -63,5 +53,4 @@
     <a class="ptt" href="https://www.ptt.cc/bbs/NTUcourse/index.html">PTT NTUcourse 版</a>
   </div>
 </body>
-
 </html>
