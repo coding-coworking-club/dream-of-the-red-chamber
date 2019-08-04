@@ -1,45 +1,49 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
+
 <head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <title> dream-of-the-red-chamber </title>
-     <link rel="stylesheet" href="../../static/css/base.css">
-     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dream of the Red Chamber</title>
+  <link rel="stylesheet" href="../../static/css/base.css">
+  <script async src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
+
 <body>
-  <div id="1" class="background">
+  <div class="background">
     <span class="title">Dream of the Red Chamber</span>
   </div>
 
-  <div id="2" class="search">
-    <form class="search_box" method="GET">
-        <input type="text" name="" class="search_text" placeholder="要好好選課！" button="">
-        <a type="submit" class="search_button" action="../course.html">
-        <i class="fas fa-search"></i>
+  <div class="search">
+    <div class="search-container">
+      <form class="search-box" method="GET">
+        <input type="text" name="" class="search-text" placeholder="要好好選課！" button="">
+        <a type="submit" class="search-button" action="../course.html">
+          <i class="fas fa-search"></i>
         </a>
-    </form>
+      </form>
+    </div>
     <h2 class="detail">{% block details %}{% endblock %}</h1>
-  </div> 
-  <div id="3" class="table" >
-    	<div class="tbl-header">
-          <table cellpadding="0" cellspacing="0" border="0">
-          <thead>
+  </div>
+  <div class="table-container">
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
           <tr>
-            <th ><strong>課程名稱</strong></th>
-            <th ><strong>學分</strong></th>
-            <th ><strong>授課教師</strong></th>
-            <th ><strong>上課時間</strong></th>
-            <th ><strong>上課評價</strong></th>
-            </tr>
-          </thead>
-          </table>
-        </div>
-        <div class="tbl-content">
-          <table cellpadding="0" cellspacing="0" border="0">
-          <tbody>
+            <th><strong>課程名稱</strong></th>
+            <th><strong>學分</strong></th>
+            <th><strong>授課教師</strong></th>
+            <th><strong>上課時間</strong></th>
+            <th><strong>上課評價</strong></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
           {% for course in course_list %}
           <tr>
             <td><a href="{{course.id}}">{{ course.class_name }}</a></td>
@@ -52,15 +56,16 @@
           {% if course.class_name == 0 %}
           <h1>很抱歉，沒有找到對應的課程。請試試看其他關鍵字！</h1>
           {% endif %}
-            </tbody>	
-          </table>
-        </div>
-      </section>  
+        </tbody>
+      </table>
+    </div>
+    </section>
     {% block course_detail %}{% endblock %}
   </div>
-  <div id="4" class="weblinks">
-      <a class = "website" href="https://nol.ntu.edu.tw/nol/guest/index.php">台大課程網</a>
-      <a class ="ptt" href="https://www.ptt.cc/bbs/NTUcourse/index.html">PTT NTUcourse 版</a>
+  <div  class="weblinks">
+    <a class="website" href="https://nol.ntu.edu.tw/nol/guest/index.php">台大課程網</a>
+    <a class="ptt" href="https://www.ptt.cc/bbs/NTUcourse/index.html">PTT NTUcourse 版</a>
   </div>
- </body>
+</body>
+
 </html>
