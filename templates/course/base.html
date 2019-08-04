@@ -17,7 +17,7 @@
   <div id="2" class="search">
     <form class="search_box" method="GET">
         <input type="text" name="" class="search_text" placeholder="要好好選課！" button="">
-        <a class="search_button" href="#">
+        <a type="submit" class="search_button" action="../course.html">
         <i class="fas fa-search"></i>
         </a>
     </form>
@@ -49,6 +49,9 @@
             <td>上課評價</td>
           </tr>
           {% endfor %}
+          {% if course.class_name == 0 %}
+          <h1>很抱歉，沒有找到對應的課程。請試試看其他關鍵字！</h1>
+          {% endif %}
             </tbody>	
           </table>
         </div>

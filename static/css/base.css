@@ -102,7 +102,7 @@ div.search {
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: bolder;
-    font-size: 15px;
+    font-size: 30px;
     color: #33cccc;
     text-shadow: white 1em 1em 2em;
 }
