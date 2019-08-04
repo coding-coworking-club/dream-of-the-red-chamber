@@ -7,7 +7,7 @@ import datetime
 
 now = datetime.datetime.now()
 
-everyday_start_hour = 20
+everyday_start_hour = 13
 everyday_start_min  = 5
 
 while True:

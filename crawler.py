@@ -61,8 +61,12 @@ pattern_course_half     = re.compile('備註\|(.*)課程大綱\|')
 # 第16項為"課程大綱網址"（url）
 # 會有兩種例外：只有一半(像國文)、沒有ceiba(像學士論文下)
 
+# pattern for clean teacher
+pattern_clean_teacher = re.compile('\[(.*)\]')
+
 frame = []
 course_number = 0
+pattern_course_water_code = re.compile(r'align=\"center\"><TD>(.*?)</TD>')
 pattern_courses = re.compile(r'print_table(.+?)lang=CH')  
 # if there is no '?', re will search for longest string, which will lead to error in our case
 
@@ -84,10 +88,13 @@ while course_number < total_num_course:
     page_response = requests.get(page_url)
     page_response.encoding = 'big5'
     courses_in_page = pattern_courses.findall(page_response.text)
-    
-    for course in courses_in_page:
-        course_url = prefix + 'print_table' + course + 'lang=CH'
-        print(course_url)        
+    courses_water_code_list = pattern_course_water_code.findall(page_response.text)
+         
+    for course in range(len(courses_in_page)):
+        course_url = prefix + 'print_table' + courses_in_page[course] + 'lang=CH'
+        course_water_code = courses_water_code_list[course]
+        print(course_url)
+        # print(course_water_code)        
 
         course_response = requests.get(course_url)
         print(course_response.status_code)
@@ -96,11 +103,14 @@ while course_number < total_num_course:
         raw_text = html2text.html2text(course_response.text)
         syllabus = re.sub('---', '', "".join(raw_text.split('\n')))
         # print(syllabus)
+
+        teacher_full_info = re.search(pattern_course_teacher , syllabus).group().split('|')[1][:-2].strip()        
         
         course_dict = {}
+        course_dict['流水號']         = course_water_code	
         course_dict['課程名稱']       = re.search(pattern_course_inform  , syllabus).group().split('|')[1].strip()
         course_dict['開課學期']       = re.search(pattern_course_semster , syllabus).group().split('|')[1][:-4].strip()
-        course_dict['授課老師']       = re.search(pattern_course_teacher , syllabus).group().split('|')[1][:-2].strip()
+        course_dict['授課老師']       = re.search(pattern_clean_teacher  , teacher_full_info).group()[1:-1]
         course_dict['課號']           = re.search(pattern_course_code    , syllabus).group().split('|')[1][:-5].strip()
         course_dict['課程識別碼']     = re.search(pattern_course_ID      , syllabus).group().split('|')[1][:-2].strip()
         course_dict['班次']           = re.search(pattern_course_class   , syllabus).group().split('|')[1][:-2].strip()
@@ -112,6 +122,7 @@ while course_number < total_num_course:
         course_dict['課程大綱']       = syllabus.strip()     
         course_dict['課程大綱網址']   = course_url
         
+                
         try:
             course_dict['備註']           = re.search(pattern_course_bonus   , syllabus).group().split('|')[1][:-10].strip()
             course_dict['Ceiba 課程網頁'] = re.search(pattern_course_ceiba   , syllabus).group().split('|')[1][:-6].strip()
