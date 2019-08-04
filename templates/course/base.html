@@ -19,8 +19,8 @@
   <div class="search">
     <div class="search-container">
       <form class="search-box" method="GET">
-        <input type="text" name="" class="search-text" placeholder="要好好選課！" button="">
-        <a type="submit" class="search-button" action="../course.html">
+        <input type="text" name="keyword" class="search-text" placeholder="要好好選課！" button="">
+        <a class="search-button" href="#">
           <i class="fas fa-search"></i>
         </a>
       </form>
@@ -43,23 +43,22 @@
     </div>
     <div class="tbl-content">
       <table cellpadding="0" cellspacing="0" border="0">
-        <tbody>
-          {% for course in course_list %}
-          <tr>
-            <td><a href="{{course.id}}">{{ course.class_name }}</a></td>
-            <td>{{ course.credit }}</td>
-            <td>{{ course.teacher }}</td>
-            <td>{{ course.class_time }}</td>
-            <td>上課評價</td>
-          </tr>
-          {% endfor %}
-          {% if course.class_name == 0 %}
+        <tbody></tbody>
+            {% for course in course_list %}
+            <tr>
+                <td><a href="{{course.id}}">{{ course.class_name }}</a></td>
+                <td>{{ course.credit }}</td>
+                <td>{{ course.teacher }}</td>
+                <td>{{ course.class_time }}</td>
+                <td>{{ course.remark }}</td>
+            </tr>
+            {% endfor %}
+          {% if not course_list %}
           <h1>很抱歉，沒有找到對應的課程。請試試看其他關鍵字！</h1>
           {% endif %}
         </tbody>
       </table>
     </div>
-    </section>
     {% block course_detail %}{% endblock %}
   </div>
   <div  class="weblinks">
