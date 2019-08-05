@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  animation: slide 20s infinite;
+  height: 72vh;
+  background-size: cover;
+  background-position: center;
+}
+
+@keyframes slide {
+  0% {
+    background-image: url("../image/01.jpg"), url("../image/02.jpg");
+  }
+  25% {
+    background-image: url("../image/02.jpg"), url("../image/03.jpg");
+  }
+  50% {
+    background-image: url("../image/03.jpg"), url("../image/04.jpg");
+  }
+  75% {
+    background-image: url("../image/04.jpg"), url("../image/05.jpg");
+  }
+  100% {
+    background-image: url("../image/05.jpg");
+  }
+}
+
+.title {
+  margin-bottom:5vh;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 28vh;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+}
+.search-box {
+  display: inline-flex;
+  border-radius: 60px;
+  background: #33cccc;
+}
+.search-text::placeholder {
+  opacity:0.4;
+  color: white;
+  font-size: 20px;
+}
+.search-text {
+  border: none;
+  outline: none;
+  padding: 0 8px 0 16px;
+  width: 100%;
+  background: none;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+.search-button {  
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+  border-radius: 60%;
+  height: 50px;
+  width: 50px;
+  background: white;
+  color: #33cccc;
+  cursor: pointer;
+}
+.value {
+  font-weight: bold;
+}
+.detail {
+  margin-bottom: 5vh;
+  padding: 0 5%;
+  color: #33cccc;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.table-container {
+  height: 35%;
+}
+
+.tbl-header {
+	background-color: rgba(51,204,204,0.8);
+}
+
+.tbl-content {
+  height:200px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(#33cccc,0.3);
+}
+
+table {
+  table-layout: fixed;
+	width: 100%;
+}
+
+th {
+  padding: 20px 15px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold; 
+  text-align: center;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+td {
+  border-bottom: solid 1pxrgba(255,255,255,0.1);
+	padding: 15px;
+  color: #33cccc;
+  font-size: 15px;
+  font-weight: 300;
+  text-align: center;
+  text-shadow: WHITE 0.1em 0.1em 0.2em;
+  vertical-align: middle;
+}
+
+.weblinks {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  height: 5vh;
+  padding: 0 5%;
+  background-color: #33cccc;    
+}
+
+.weblinks > a {
+  padding-left: 5%;
+  color: white;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}

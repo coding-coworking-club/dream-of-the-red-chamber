@@ -2,7 +2,6 @@ from django.shortcuts import render
 from .models import Post
 
 # Create your views here.
-
 def course(request):
 	keyword = request.GET.get('keyword', '')
 	course_list = Post.objects.filter(syllabus__contains=keyword)

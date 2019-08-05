@@ -1,46 +1,42 @@
 {% extends "course/base.html" %} 
-{% block details %} 以下為課程搜尋結果 {% endblock %}
-{% block table %}
-<style>
-.content-table{
-	position: absolute;
-	top: 100%;
-}
-</style>
-<table class= "content-table" border="1" height="35">
-		<tr>
-			<td width="100"><strong>課程名稱</strong></td>
-			<td width="100"><strong>課程名稱</strong></td>
-			<td width="100"><strong>課程名稱</strong></td>
-			<td width="20"><strong>學分</strong></td>
-			<td width="50"><strong>全年/半年</strong></td>
-			<td width="50"><strong>必修/選修</strong></td>
-			<td width="100"><strong>授課教師</strong></td>
-			<td width="20"><strong>加選方式</strong></td>
-			<td width="100"><strong>上課時間</strong></td>
-			<td width="100"><strong>上課地點</strong></td>
-			<td width="30"><strong>總人數</strong></td>
-			<td width="20"><strong>點擊次數</strong></td>
-			<td width="100"><strong>選課限制條件</strong></td>
-			<td width="100"><strong>備註</strong></td>
-			<td width="100"><strong>課程網址</strong></td>
-		</tr>
-		{% for course in course_list %}
-		<tr>
-			<td width="100"><a href="{{course.id}}">{{ course.class_name }}</a></td>
-			<td width="20">{{ course.credit }}</td>
-			<td width="50">{{ course.half_year }}</td>
-			<td width="50">{{ course.required }}</td>
-			<td width="100">{{ course.teacher }}</td>
-			<td width="20">{{ course.add_type }}</td>
-			<td width="100">{{ course.class_time }}</td>
-			<td width="100">{{ course.place }}</td>
-			<td width="30">{{ course.stu_number }}</td>
-			<td width="20">{{ course.click_times }}</td>
-			<td width="100">{{ course.constraints }}</td>
-			<td width="100">{{ course.remark }}</td>
-			<td width="100"><a href="{{course.class_url}}"><font >url</a></td>
-		</tr>
-		{% endfor %}
-	</table>
+{% block course %}
+{% if course_list %} 以下是跟關鍵字有關的課程!{% endif %}
+{% if not course_list %}抱歉 沒有找到對應的課程，試試其他關鍵字吧！{% endif %}
 {% endblock %}
+{% block search %}
+<div class="search">
+    <div class="search-container">
+        <form class="search-box" method="GET">
+            <input type="text" class="search-text" name="keyword" placeholder="請輸入想找的課程關鍵字" button="">
+            <input type="submit" class="search-button" href="#" value="GO">
+        </form>
+    </div>
+{% endblock %}
+{% block course-table %}
+{% if course_list %}    
+{% for course in course_list %}
+<style>
+td {
+    border-bottom: solid 1pxrgba(255,255,255,0.1);
+    padding: 15px;
+    color: #33cccc;
+    font-size: 25px;
+    font-weight: 300;
+    text-align: center;
+    text-shadow: WHITE 0.1em 0.1em 0.2em;
+    vertical-align: middle;
+}	
+</style>
+<tr>
+    <td><a style="color:#33cccc;" href="{{course.id}}">{{ course.class_name }}</a></td>
+    <td>{{ course.credit }}</td>
+    <td>{{ course.teacher }}</td>
+    <td>{{ course.class_time }}</td>
+    <td>點我看評價</td>
+</tr>
+{% endfor %}
+{% endif %}
+{% if not course_list %}
+{% endif %}
+{% endblock %}
+

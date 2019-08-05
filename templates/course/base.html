@@ -1,31 +1,56 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-  <head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <title> course_homepage </title>
-     <link rel="stylesheet" href="../static/css/base.css">
-     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-   </head>
-   <body>
-<!--Title-->
-      <section class="main-title" >
-        <h1 class="title">Course Helper</h1>
-        <h1 class="details">{% block details %}{% endblock %}</h1>
-      </section>
-     <section class="section-top"></section>
-<!--searchbox--> 
-      <form class="search_box" method="GET">
-      <input type="text" name="" class="search_text" placeholder="" >
-      <a class="search_button" href="#">
-      <i class="fas fa-search"></i>
-      </a>
-      </form>
- <!--table---->
-{% block table %}{% endblock %}}
-<!--weblinks-->
-{% block weblinks %}{% endblock %}}
- </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dream of the Red Chamber</title>
+  <link rel="stylesheet" href="../../static/css/base.css">
+  <script async src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+  <div class="background">
+    <span class="title">Dream of the Red Chamber</span>
+  </div>
+    {% block search %}
+    {% endblock %}
+    <h1 class="detail">
+    {% block course_homepage %}
+    {% endblock %}
+    {% block course %}
+    {% endblock %}
+    {%  block detail %}
+    {% endblock %}
+    </h1>
+  </div>
+  <div class="table-container">
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr>
+            <th><strong>課程名稱</strong></th>
+            <th><strong>學分</strong></th>
+            <th><strong>授課教師</strong></th>
+            <th><strong>上課時間</strong></th>
+            <th><strong>上課評價</strong></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+          <tbody>
+          {% block course-table %}
+          {% endblock %}
+          {% block coursedetail-table %}
+          {% endblock %}
+          </tbody>
+      </table>
+    </div>
+  <div class="weblinks">
+    <a class="website" href="https://nol.ntu.edu.tw/nol/guest/index.php">台大課程網</a>
+    <a class="ptt" href="https://www.ptt.cc/bbs/NTUcourse/index.html">PTT NTUcourse 版</a>
+  </div>
+</body>
 </html>
