@@ -45,19 +45,19 @@
   min-height: 28vh;
 }
 .search-container {
-display: flex;
-justify-content: center;
-margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
 }
 .search-box {
-display: inline-flex;
-border-radius: 60px;
-background: #33cccc;
+  display: inline-flex;
+  border-radius: 60px;
+  background: #33cccc;
 }
 .search-text::placeholder {
-opacity:0.4;
-color: white;
-font-size: 20px;
+  opacity:0.4;
+  color: white;
+  font-size: 20px;
 }
 .search-text {
   border: none;
