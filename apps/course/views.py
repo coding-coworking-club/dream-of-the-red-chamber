@@ -6,6 +6,12 @@ from django.http import HttpRequest
 #from django.db.models import Count
 from django.http import HttpResponseRedirect
 
+def get_client_ip(request):
+	if request.META.has_key('HTTP_X_FORWARDED_FOR'):
+		ip =  request.META['HTTP_X_FORWARDED_FOR']
+	else:
+		ip = request.META['REMOTE_ADDR']
+	return ip
 
 def course(request):
 	keyword = request.GET.get('keyword', '')
@@ -25,11 +31,13 @@ def course_detail(request, course_id):
 	#template_name = 'course/course_detail.html'
 	#context = {'course':course}
 	#return render(request, template_name, context)
+	ip =  get_client_ip(request)
 	if not request.user.is_authenticated:
-		History.objects.create(course=course,keyword=keyword,time=time)
+		History.objects.create(course=course,keyword=keyword,time=time,ip=ip)
 	else:
-		History.objects.create(user=request.user,course=course,keyword=keyword,time=time)
+		History.objects.create(user=request.user,course=course,keyword=keyword,time=time,ip=ip)
 	
+
 	course.click_times += 1
 	course.save()
 	

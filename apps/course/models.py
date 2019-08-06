@@ -2,8 +2,8 @@ from django.db import models
 
 # Create your models here.
 class Post(models.Model):
-	#serial_num = models.PositiveIntegerField(default=None) #流水號
-	#stu_department = models.CharField(max_length=50,default=None) #授課對象
+	serial_num = models.PositiveIntegerField(default=5) #流水號
+	stu_department = models.CharField(max_length=50,default="",blank=True, null=True) #授課對象
 	class_code = models.CharField(max_length=30,default=None) #課號
 	class_order = models.CharField(max_length=30,default=None) #班次
 	class_name = models.CharField(max_length=100,default=None) #課程名稱

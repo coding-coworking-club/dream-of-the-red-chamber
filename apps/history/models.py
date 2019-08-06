@@ -18,7 +18,9 @@ class History(models.Model):
 	)
 	keyword = models.TextField()
 	time = models.DateTimeField()
-	
+	ip = models. GenericIPAddressField(default = "127.0.0.1",blank=True, null=True)
+	level = models.TextField(default="") # "click" or "favorite"
+
 	def __str__(self):
 		return str(self.time)
 
