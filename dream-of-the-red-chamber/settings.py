@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'apps.course',
     'users.apps.UsersConfig', # new
+	'apps.history'
 ]
 AUTH_USER_MODEL = 'users.CustomUser' # new
 
