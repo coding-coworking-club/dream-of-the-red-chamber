@@ -4,6 +4,7 @@ from datetime import datetime
 from apps.history.models import History
 from django.http import HttpRequest
 #from django.db.models import Count
+from django.http import HttpResponseRedirect
 
 
 def course(request):
@@ -18,9 +19,9 @@ def course_detail(request, course_id):
 	keyword = request.GET.get('keyword', '')
 	time = datetime.now()
 	
-	template_name = 'course/course_detail.html'
-	context = {'course':course}
-	
+	#template_name = 'course/course_detail.html'
+	#context = {'course':course}
+	#return render(request, template_name, context)
 	if not request.user.is_authenticated:
 		History.objects.create(course=course,keyword=keyword,time=time)
 	else:
@@ -31,4 +32,4 @@ def course_detail(request, course_id):
 	
 	#hot_keyword = History.objects.values('keyword').annotate(c=Count('keyword')).order_by('-c')
 	
-	return render(request, template_name, context)
+	return HttpResponseRedirect(course.class_url)
