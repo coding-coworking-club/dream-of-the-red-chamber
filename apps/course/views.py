@@ -9,9 +9,12 @@ from django.http import HttpResponseRedirect
 
 def course(request):
 	keyword = request.GET.get('keyword', '')
-	course_list = Post.objects.filter(syllabus__contains=keyword)
+	if keyword == "":
+		course_list = []
+	else:
+		course_list = Post.objects.filter(syllabus__contains=keyword)
 	template_name = 'course/course.html'
-	context = {'course_list': course_list}
+	context = {'course_list':course_list, 'keyword':keyword}
 	return render(request, template_name, context)
 
 def course_detail(request, course_id):

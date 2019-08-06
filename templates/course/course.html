@@ -28,11 +28,11 @@ td {
 }	
 </style>
 <tr>
-    <td><a style="color:#33cccc;" href="{{course.id}}">{{ course.class_name }}</a></td>
+    <td><a style="color:#33cccc;" href="{{course.id}}/?keyword={{keyword}}">{{ course.class_name }}</a></td>
     <td>{{ course.credit }}</td>
     <td>{{ course.teacher }}</td>
     <td>{{ course.class_time }}</td>
-    <td>點我看評價</td>
+    <td><a style="color:#33cccc;" href="https://www.ptt.cc/bbs/NTUcourse/search?q={{course.teacher}}+{{course.class_name}}">點我看評價</a></td>
 </tr>
 {% endfor %}
 {% endif %}
