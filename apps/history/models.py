@@ -17,6 +17,8 @@ class History(models.Model):
         on_delete=models.CASCADE
 	)
 	keyword = models.TextField()
+	type = models.CharField(max_length=20,null=True)
+	ip = models.CharField(max_length=30,null=True)
 	time = models.DateTimeField()
 	
 	def __str__(self):
