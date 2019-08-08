@@ -20,7 +20,8 @@ def course(request):
 	if keyword == "":
 		course_list = []
 	else:
-		course_list = Post.objects.filter(syllabus__contains=keyword)
+		SQL = 'SELECT DISTINCT serial_num, id FROM course_post WHERE syllabus LIKE \'%' + keyword + '%\'' + ' GROUP BY serial_num'
+		course_list = Post.objects.raw(SQL)
 		
 	template_name = 'course/course.html'
 	context = {'course_list':course_list, 'keyword':keyword}
