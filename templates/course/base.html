@@ -13,45 +13,27 @@
   <div class="background">
     <span class="title">Dream of the Red Chamber</span>
   </div>
-    {% block search %}
+
+  {% block search %}
+  {% endblock %}
+
+  <div class="detail">
+    {% block message %}
     {% endblock %}
-    <h1 class="detail">
-    {% block course_homepage %}
+    {% block detail %}
     {% endblock %}
-    {% block course %}
-    {% endblock %}
-    {%  block detail %}
-    {% endblock %}
-    </h1>
   </div>
-  <div class="table-container">
-    <div class="tbl-header">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <thead>
-          <tr>
-            <th><strong>課程名稱</strong></th>
-            <th><strong>學分</strong></th>
-            <th><strong>授課教師</strong></th>
-            <th><strong>上課時間</strong></th>
-            <th><strong>上課評價</strong></th>
-			<th><strong>匯入課程</strong></th>
-          </tr>
-        </thead>
-      </table>
-    </div>
-    <div class="tbl-content">
-      <table cellpadding="0" cellspacing="0" border="0">
-          <tbody>
-          {% block course-table %}
-          {% endblock %}
-          {% block coursedetail-table %}
-          {% endblock %}
-          </tbody>
-      </table>
-    </div>
+  
+  {% block course-table-th %}
+  {% endblock %}
+  {% block course-table-tb %}
+  {% endblock %}
+  {% block coursedetail-table %}
+  {% endblock %}
+
   <div class="weblinks">
-    <a class="website" href="https://nol.ntu.edu.tw/nol/guest/index.php">台大課程網</a>
-    <a class="ptt" href="https://www.ptt.cc/bbs/NTUcourse/index.html">PTT NTUcourse 版</a>
+    <a class="website" href="https://nol.ntu.edu.tw/nol/guest/index.php" target="_blank">台大課程網</a>
+    <a class="ptt" href="https://www.ptt.cc/bbs/NTUcourse/index.html" target="_blank">PTT NTUcourse 版</a>
   </div>
 </body>
 </html>

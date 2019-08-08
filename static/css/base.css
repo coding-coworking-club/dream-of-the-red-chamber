@@ -27,7 +27,7 @@
     background-image: url("../image/04.jpg"), url("../image/05.jpg");
   }
   100% {
-    background-image: url("../image/05.jpg");
+    background-image: url("../image/05.jpg"), url("../image/01.jpg");
   }
 }
 

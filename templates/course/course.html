@@ -1,43 +1,97 @@
 {% extends "course/base.html" %} 
-{% block course %}
-{% if course_list %} 以下是跟關鍵字有關的課程!{% endif %}
-{% if not course_list %}抱歉 沒有找到對應的課程，試試其他關鍵字吧！{% endif %}
-{% endblock %}
+
 {% block search %}
 <div class="search">
     <div class="search-container">
         <form class="search-box" method="GET">
-            <input type="text" class="search-text" name="keyword" placeholder="請輸入想找的課程關鍵字" button="">
+            <input type="text" class="search-text" name="keyword" placeholder="要好好選課！" button="">
             <input type="submit" class="search-button" href="#" value="GO">
         </form>
     </div>
+</div>    
 {% endblock %}
-{% block course-table %}
-{% if course_list %}    
-{% for course in course_list %}
+
+{% block message %}
 <style>
-td {
-    border-bottom: solid 1pxrgba(255,255,255,0.1);
-    padding: 15px;
-    color: #33cccc;
-    font-size: 25px;
-    font-weight: 300;
-    text-align: center;
-    text-shadow: WHITE 0.1em 0.1em 0.2em;
-    vertical-align: middle;
-}	
+    h1 {
+        text-align: center;
+        color: #33cccc;
+        font-size: 20px;
+    }   
+    h2 {
+        text-align: center;
+        color: #33cccc;
+        font-size: 18px;
+    }
 </style>
-<tr>
-    <td><a style="color:#33cccc;" href="{{course.id}}/?keyword={{keyword}}">{{ course.class_name }}</a></td>
-    <td>{{ course.credit }}</td>
-    <td>{{ course.teacher }}</td>
-    <td>{{ course.class_time }}</td>
-    <td><a style="color:#33cccc;" href="https://www.ptt.cc/bbs/NTUcourse/search?q={{course.teacher}}+{{course.class_name}}">點我看評價</a></td>
-	<td><a style="color:#33cccc;" href="add/{{course.id}}/?keyword={{keyword}}">匯入</a></td>
-</tr>
-{% endfor %}
-{% endif %}
-{% if not course_list %}
-{% endif %}
+    {% if keyword == "" %} 
+        <h1>請輸入你有興趣的課程關鍵字！</h1>
+        <h2>只要是跟關鍵字有關的課程，不只是課程的基本資訊（課程名稱、授課教師等等），</h2>
+        <h2>課程大綱內容（課程概述、課程目標、單元主題）裡面有包含關鍵字的，都能一次找齊！</h2>
+        <h2>哪一堂『大一國文』會講『紅樓夢』？誰的『經濟學』只要交『期末報告』就好？</h2>
+        <h2>哪些程式課會用到『C++』？誰的『必修』一定要『出席』？</h2>
+        <h2>想打造自己的貼身課表，重拾選課的自主權嗎？</h2>
+        <h2>就從輸入關鍵字開始吧!</h2>
+    {% elif not course_list %}
+        <h1>抱歉，沒有對應的課程。試試其他關鍵字吧！</h1>
+    {% else %}
+        <h1>以下是跟關鍵字「{{ keyword }}」有關的課程，共有 {{ course_list.count() }} 筆資料</h1>
+    {% endif %}
+{% endblock %}
+
+{% block course-table-th %}
+    {% if course_list %}
+    <style>
+        td {
+            border-bottom: solid 1pxrgba(255,255,255,0.1);
+            padding: 15px;
+            color: #33cccc;
+            font-size: 25px;
+            font-weight: 300;
+            text-align: center;
+            text-shadow: WHITE 0.1em 0.1em 0.2em;
+            vertical-align: middle;
+        }   
+    </style>
+    <div class="table-container">
+    <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+            <tr>
+                <th><strong>課程名稱</strong></th>
+                <th><strong>學分</strong></th>
+                <th><strong>授課教師</strong></th>
+                <th><strong>上課時間</strong></th>
+                <th><strong>上課評價</strong></th>
+                <th><strong>匯入課程</strong></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+</div>
+    {% else %}
+    {% endif %}
+{% endblock %}
+
+{% block course-table-tb %}
+    {% for course in course_list %}
+        {% if course_list %}   
+            <div class="tbl-content">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td><a style="color:#33cccc;" href="{{course.id}}/?keyword={{keyword}}">{{ course.class_name }}</a></td>
+                            <td>{{ course.credit }}</td>
+                            <td>{{ course.teacher }}</td>
+                            <td>{{ course.class_time }}</td>
+                            <td><a style="color:#33cccc;" href="https://www.ptt.cc/bbs/NTUcourse/search?q={{course.teacher}}+{{course.class_name}}">點我看評價</a></td>
+                            <td><a style="color:#33cccc;" href="add/{{course.id}}/?keyword={{keyword}}"　target="_blank">匯入</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+        {% endif %}
+    {% endfor %}
 {% endblock %}
 
