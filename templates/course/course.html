@@ -37,7 +37,7 @@
 {% elif not course_list %}
   <h1>抱歉，沒有對應的課程。試試其他關鍵字吧！</h1>
 {% else %}
-  <h1>以下是跟關鍵字「{{ keyword }}」有關的課程，共有 {{ course_list.count() }} 筆資料</h1>
+  <h1>以下是跟關鍵字「{{ keyword }}」有關的課程，共有 {{ course_list.count }} 筆資料</h1>
 {% endif %}
 {% endblock %}
 
