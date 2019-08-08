@@ -7,33 +7,25 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Dream of the Red Chamber</title>
   <link rel="stylesheet" href="../../static/css/base.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC:400,700&display=swap&subset=chinese-traditional" rel="stylesheet">
+  <link rel="shortcut icon" href="https://ccclub-static.s3.amazonaws.com/static/favicon.ico" type="image/x-icon">
   <script async src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body>
   <div class="background">
-    <span class="title">Dream of the Red Chamber</span>
+    <span class="background__title">Dream of the Red Chamber</span>
   </div>
 
   {% block search %}
   {% endblock %}
 
-  <div class="detail">
-    {% block message %}
-    {% endblock %}
-    {% block detail %}
-    {% endblock %}
-  </div>
+  {% block description %}
+  {% endblock %}
   
-  {% block course-table-th %}
-  {% endblock %}
-  {% block course-table-tb %}
-  {% endblock %}
-  {% block coursedetail-table %}
+  {% block course-table %}
   {% endblock %}
 
-  <div class="weblinks">
-    <a class="website" href="https://nol.ntu.edu.tw/nol/guest/index.php" target="_blank">台大課程網</a>
-    <a class="ptt" href="https://www.ptt.cc/bbs/NTUcourse/index.html" target="_blank">PTT NTUcourse 版</a>
-  </div>
+  {% block web-links %}
+  {% endblock %}
 </body>
 </html>
