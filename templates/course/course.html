@@ -33,6 +33,7 @@ td {
     <td>{{ course.teacher }}</td>
     <td>{{ course.class_time }}</td>
     <td><a style="color:#33cccc;" href="https://www.ptt.cc/bbs/NTUcourse/search?q={{course.teacher}}+{{course.class_name}}">點我看評價</a></td>
+	<td><a style="color:#33cccc;" href="add/{{course.id}}/?keyword={{keyword}}">匯入</a></td>
 </tr>
 {% endfor %}
 {% endif %}
