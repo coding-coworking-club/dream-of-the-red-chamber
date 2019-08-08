@@ -1,98 +1,73 @@
 {% extends "course/base.html" %}
 
 {% block search %}
-<div class="search">
-  <div class="search-container">
+<div class="search-container">
+  <div class="search">
     <form class="search-box" method="GET">
-      <input type="text" class="search-text" name="keyword" placeholder="要好好選課！" button="">
-      <input type="submit" class="search-button" href="#" value="GO">
+      <input type="text" class="search-box__text" name="keyword" placeholder="要好好選課！">
+      <input type="submit" class="search-box__button" value="GO">
     </form>
   </div>
+  {% if keyword != "" %}
+    <div class="search-message">
+    {% if not course_list %}
+      <p>抱歉，沒有對應的課程。試試其他關鍵字吧！</p>
+    {% else %}
+      <p>以下是跟關鍵字「{{ keyword }}」有關的課程，共有 {{ course_list.count }} 筆資料：</p>
+    {% endif %}
+    </div> 
+  {% endif %}
 </div>
 {% endblock %}
 
-{% block message %}
-<style>
-  h1 {
-    text-align: center;
-    color: #33cccc;
-    font-size: 20px;
-  }
-
-  h2 {
-    text-align: center;
-    color: #33cccc;
-    font-size: 18px;
-  }
-</style>
-
-{% if keyword == "" %}
-  <h1>請輸入你有興趣的課程關鍵字！</h1>
-  <h2>只要是跟關鍵字有關的課程，不只是課程的基本資訊（課程名稱、授課教師等等），</h2>
-  <h2>課程大綱內容（課程概述、課程目標、單元主題）裡面有包含關鍵字的，都能一次找齊！</h2>
-  <h2>哪一堂『大一國文』會講『紅樓夢』？誰的『經濟學』只要交『期末報告』就好？</h2>
-  <h2>哪些程式課會用到『C++』？誰的『必修』一定要『出席』？</h2>
-  <h2>想打造自己的貼身課表，重拾選課的自主權嗎？</h2>
-  <h2>就從輸入關鍵字開始吧!</h2>
-{% elif not course_list %}
-  <h1>抱歉，沒有對應的課程。試試其他關鍵字吧！</h1>
-{% else %}
-  <h1>以下是跟關鍵字「{{ keyword }}」有關的課程，共有 {{ course_list.count }} 筆資料</h1>
-{% endif %}
+{% block description %}
+  {% if keyword == "" %}
+    <div class="description">
+      <p>請輸入您有興趣的課程關鍵字！
+         不論是課程的基本資訊（課程名稱、授課教師等），
+         亦或是課程大綱的部分內容，
+         所有相關課程，一次幫您找齊！
+         哪一堂『大一國文』會講『紅樓夢』？
+         誰的『經濟學』只要交『期末報告』就好？
+         哪些程式課會用到『C++』？
+         誰的『必修』一定要『出席』？
+         想打造自己的貼身課表，重拾選課的自主權嗎？
+         就從輸入關鍵字開始吧!</p>
+    </div>
+  {% endif %}
 {% endblock %}
 
-{% block course-table-th %}
+{% block course-table %}
 {% if course_list %}
-  <style>
-    td {
-      border-bottom: solid 1pxrgba(255, 255, 255, 0.1);
-      padding: 15px;
-      color: #33cccc;
-      font-size: 25px;
-      font-weight: 300;
-      text-align: center;
-      text-shadow: WHITE 0.1em 0.1em 0.2em;
-      vertical-align: middle;
-    }
-  </style>
-  <div class="table-container">
-    <div class="tbl-header">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <thead>
+  <div class="course-table__container">
+      <table class="course-table">
+        <thead class="course-table__header">
           <tr>
             <th><strong>課程名稱</strong></th>
-            <th><strong>學分</strong></th>
             <th><strong>授課教師</strong></th>
-            <th><strong>上課時間</strong></th>
-            <th><strong>上課評價</strong></th>
+            <th><strong>課程資訊</strong></th>
             <th><strong>匯入課程</strong></th>
           </tr>
         </thead>
-      </table>
-    </div>
-  </div>
-{% else %}
-{% endif %}
-{% endblock %}
-
-{% block course-table-tb %}
-{% for course in course_list %}
-  {% if course_list %}
-    <div class="tbl-content">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tbody>
+        <tbody class="course-table__body">
+          {% for course in course_list %}
           <tr>
-            <td><a style="color:#33cccc;" href="{{course.id}}/?keyword={{keyword}}">{{ course.class_name }}</a></td>
-            <td>{{ course.credit }}</td>
-            <td>{{ course.teacher }}</td>
-            <td>{{ course.class_time }}</td>
-            <td><a style="color:#33cccc;" href="https://www.ptt.cc/bbs/NTUcourse/search?q={{course.teacher}}+{{course.class_name}}">點我看評價</a></td>
-            <td><a style="color:#33cccc;" href="add/{{course.id}}/?keyword={{keyword}}" 　target="_blank">匯入</a></td>
+            <td>{{ course.class_name }}</a></td>
+            <td>{{ course.teacher | default:"N/A" }}</td>
+            <td><a href="{{course.id}}/?keyword={{keyword}}" target="_blank">連結</a></td>
+            <td><a href="add/{{course.id}}" target="_blank">匯入</a></td>
           </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>
-  {% else %}
-  {% endif %}
-{% endfor %}
+  </div>
+{% endif %}
+{% endblock %}
+
+{% block web-links %}
+<div class="web-links">
+  <a class="web-links__website" href="https://nol.ntu.edu.tw/nol/guest/index.php" target="_blank">台大課程網</a>
+  <a class="web-links__ptt" href="https://www.ptt.cc/bbs/NTUcourse/index.html" target="_blank">PTT NTUcourse 版</a>
+</div>
 {% endblock %}

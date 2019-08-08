@@ -1,14 +1,30 @@
+/* Normalize Start */
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Noto Serif TC', serif;
 }
+
+input:-webkit-autofill {
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+  -webkit-text-fill-color: white !important;
+}
+
+@-webkit-keyframes autofill {
+  to {
+      color: #666;
+      background: transparent;
+  }
+}
+/* Normalize End */
 
 .background {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   animation: slide 20s infinite;
-  height: 72vh;
+  height: 70vh;
   background-size: cover;
   background-position: center;
 }
@@ -31,35 +47,33 @@
   }
 }
 
-.title {
+.background__title {
   margin-bottom:5vh;
   color: white;
   font-size: 40px;
   text-align: center;
   text-shadow: black 0.1em 0.1em 0.2em;
 }
-.search {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  min-height: 28vh;
-}
+
 .search-container {
   display: flex;
-  justify-content: center;
-  margin-top: 5vh;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 25vh;
 }
+
+.search {
+  display: flex;
+  justify-content: center;
+}
+
 .search-box {
   display: inline-flex;
   border-radius: 60px;
   background: #33cccc;
 }
-.search-text::placeholder {
-  opacity:0.4;
-  color: white;
-  font-size: 20px;
-}
-.search-text {
+
+.search-box__text {
   border: none;
   outline: none;
   padding: 0 8px 0 16px;
@@ -69,93 +83,100 @@
   font-size: 20px;
   text-align: center;
 }
-.search-button {  
+
+.search-box__text::placeholder {
+  opacity:0.4;
+  color: white;
+  font-size: 20px;
+}
+
+.search-box__button {  
   display: flex;
   align-items: center;
   flex-shrink: 0;
   justify-content: center;
+  border-color: #33cccc;
   border-radius: 60%;
+  border-style: solid;
+  border-width: thin;
   height: 50px;
   width: 50px;
   background: white;
   color: #33cccc;
   cursor: pointer;
 }
-.value {
-  font-weight: bold;
-}
-.detail {
-  margin-bottom: 5vh;
+
+.search-message {
   padding: 0 5%;
   color: #33cccc;
-  font-weight: bolder;
-  text-align: center;
-}
-
-.table-container {
-  height: 35%;
-}
-
-.tbl-header {
-	background-color: rgba(51,204,204,0.8);
-}
-
-.tbl-content {
-  height:200px;
-  overflow-x:auto;
-  margin-top: 0px;
-  border: 1px solid rgba(#33cccc,0.3);
-}
-
-table {
-  table-layout: fixed;
-	width: 100%;
-}
-
-th {
-  padding: 20px 15px;
-  color: white;
   font-size: 20px;
-  font-weight: bold; 
   text-align: center;
-  text-shadow: black 0.1em 0.1em 0.2em;
 }
 
-td {
-  border-bottom: solid 1pxrgba(255,255,255,0.1);
-	padding: 15px;
+.description {
+  padding: 0 5% 5vh;
+  margin-bottom: 5vh;
   color: #33cccc;
-  font-size: 15px;
-  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.6;
   text-align: center;
-  text-shadow: WHITE 0.1em 0.1em 0.2em;
-  vertical-align: middle;
 }
 
-.weblinks {
+.description p {
+  white-space: pre-line;
+}
+
+.course-table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-bottom: 5vh;
+  width: 100%;
+}
+
+.course-table th {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  padding: 16px 12px;
+  background-color: #33cccc;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+}
+
+.course-table td {
+  padding: 16px 12px;
+  color: black;
+  font-size: 20px;
+  text-align: center;
+}
+
+.course-table td a:link,
+.course-table td a:visited {
+  color: #3380cc;
+  text-decoration: none;
+}
+
+.course-table td a:hover {
+  text-decoration: underline;
+}
+
+.web-links {
+  bottom: 0;
+  position: fixed;
   align-items: center;
   display: flex;
   justify-content: flex-end;
+  box-sizing: border-box;
   height: 5vh;
+  width: 100%;
   padding: 0 5%;
   background-color: #33cccc;    
 }
 
-.weblinks > a {
+.web-links > a {
   padding-left: 5%;
   color: white;
   text-decoration: none;
   white-space: nowrap;
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-}
-
-::-webkit-scrollbar-thumb {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
