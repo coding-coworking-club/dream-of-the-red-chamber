@@ -1,16 +1,31 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
+
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92912541-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-92912541-3');
+  </script>
+  <script async src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Dream of the Red Chamber</title>
-  <link rel="stylesheet" href="../../static/css/base.css">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC:400,700&display=swap&subset=chinese-traditional" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Noto+Serif+TC:400,700&display=swap&subset=chinese-traditional">
   <link rel="shortcut icon" href="https://ccclub-static.s3.amazonaws.com/static/favicon.ico" type="image/x-icon">
-  <script async src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <link rel="stylesheet" href="../../static/css/base.css">
 </head>
+
 <body>
   <div class="background">
     <span class="background__title">Dream of the Red Chamber</span>
@@ -21,11 +36,12 @@
 
   {% block description %}
   {% endblock %}
-  
+
   {% block course-table %}
   {% endblock %}
 
   {% block web-links %}
   {% endblock %}
 </body>
+
 </html>
