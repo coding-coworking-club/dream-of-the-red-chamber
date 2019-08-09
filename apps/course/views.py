@@ -28,10 +28,10 @@ def course(request):
         course_list_syllabus = [course for course in course_list_syllabus if course not in course_list_vip]
         course_list = list(course_list_vip) + course_list_syllabus
 
-        template_name = 'course/course.html'
-        context = {'course_list':course_list, 'keyword':keyword}
+    template_name = 'course/course.html'
+    context = {'course_list':course_list, 'keyword':keyword}
 
-        return render(request, template_name, context)
+    return render(request, template_name, context)
 
 def course_detail(request, course_id):
     course = Post.objects.get(id=course_id)
@@ -69,5 +69,5 @@ def course_add(request, course_id):
             user=request.user, course=course, keyword=keyword, time=time, type=type, ip=ip)
 
     url = 'https://nol.ntu.edu.tw/nol/coursesearch/myschedule.php'
-    return HttpResponseRedirect('{}?add={}'.format(url, course.serial_num)
+    return HttpResponseRedirect('{}?add={}'.format(url, course.serial_num))
 
