@@ -1,2 +1,9 @@
-.DS_Store
 __pycache__/
+.DS_Store
+*.pyc
+*.sqlite3
+**/migrations/**
+dream-of-the-red-chamber/prod_settings.py
+media/
+reload_gunicorn.sh
+static/admin/
