@@ -17,10 +17,11 @@ def get_client_ip(request):
     return ip
 
 def course(request):
-    keyword = request.GET.get('keyword', '')
+    keyword = request.GET.get('keyword', '').lower()
     if keyword == "":
         course_list = []
     else:
+        # TO DO: need to improve the performance in the future
         course_list_name = Post.objects.filter(class_name__contains=keyword)
         course_list_teacher = Post.objects.filter(teacher__contains=keyword)
         course_list_syllabus = Post.objects.filter(syllabus__contains=keyword)
@@ -29,7 +30,7 @@ def course(request):
         course_list = list(course_list_vip) + course_list_syllabus
 
     template_name = 'course/course.html'
-    context = {'course_list':course_list, 'keyword':keyword}
+    context = {'course_list': course_list, 'keyword': request.GET.get('keyword', '')}
 
     return render(request, template_name, context)
 
