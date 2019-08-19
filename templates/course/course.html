@@ -45,9 +45,7 @@
           <tr>
             <th><strong>課程名稱</strong></th>
             <th><strong>授課教師</strong></th>
-            <th><strong>課程資訊</strong></th>
-            <th><strong>課程評價</strong></th>
-            <th><strong>匯入課程</strong></th>
+            <th><strong>課程資訊 | 課程評價 | 匯入課程</strong></th>
           </tr>
         </thead>
         <tbody class="course-table__body">
@@ -55,9 +53,10 @@
           <tr>
             <td>{{ course.class_name }}</a></td>
             <td>{{ course.teacher | default:"N/A" }}</td>
-            <td><a href="{{course.id}}/?keyword={{keyword}}" target="_blank">連結</a></td>
-            <td><a href="https://www.ptt.cc/bbs/NTUcourse/search?q={{course.teacher}}" target="_blank">連結</a></td>
-            <td><a href="add/{{course.id}}" target="_blank">匯入</a></td>
+            <td style="letter-spacing:50px;">
+                <a href="{{course.id}}/?keyword={{keyword}}" target="_blank" style="font-size: 30px;"><i class="fas fa-info-circle" style="color: #33cccc;"></i></a>
+                <a href="https://www.ptt.cc/bbs/NTUcourse/search?q={{course.teacher}}" target="_blank" style="font-size: 30px;"><i class="fas fa-link" style="color: #33cccc;"></i></a>            
+                <a href="add/{{course.id}}" target="_blank" style="font-size: 30px;"><i class="fas fa-upload" style="color: #33cccc;"></i></a>
           </tr>
           {% endfor %}
         </tbody>
